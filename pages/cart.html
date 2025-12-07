@@ -21,6 +21,21 @@
         </div>
     </header>
 
+    <input type="checkbox" id="burger-toggle">
+    <label for="burger-toggle" class="burger-menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+    </label>
+
+    <nav class="mobile-nav">
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="forms.html">Формы</a></li>
+            <li><a href="login.html">Войти</a></li>
+        </ul>
+    </nav>
+
     <nav class="sticky-nav">
         <ul>
             <li><a href="index.html">Главная</a></li>
@@ -29,19 +44,19 @@
 
     <div class="container">
         <div class="cards" id="product-list">
-            <div class="card" id="card-1" draggable="true" ondragstart="drag(event, 'Семена огурцов', 100)">
+            <div class="card" id="card-1" draggable="true" ondragstart="drag(event, 'Семена огурцов', 100)" onclick="handleCardClick(event, 'Семена огурцов', 100)">
                 <div class="card-header orange">Семена огурцов</div>
                 <div class="card-body">
                     <p>Страна: Турция <br>Вес: 40 гр. <br>Стоимость: 100 рублей</p>
                 </div>
             </div>
-            <div class="card" id="card-2" draggable="true" ondragstart="drag(event, 'Семена томатов', 199)">
+            <div class="card" id="card-2" draggable="true" ondragstart="drag(event, 'Семена томатов', 199)" onclick="handleCardClick(event, 'Семена томатов', 199)">
                 <div class="card-header pink">Семена томатов</div>
                 <div class="card-body">
                     <p>Страна: Испания <br>Вес: 65 гр. <br>Стоимость: 199 рублей</p>
                 </div>
             </div>
-            <div class="card" id="card-3" draggable="true" ondragstart="drag(event, 'Семена тыквы', 70)">
+            <div class="card" id="card-3" draggable="true" ondragstart="drag(event, 'Семена тыквы', 70)" onclick="handleCardClick(event, 'Семена тыквы', 70)">
                 <div class="card-header purple">Семена тыквы</div>
                 <div class="card-body">
                     <p>Страна: Франция <br>Вес: 100 гр. <br>Стоимость: 70 рублей</p>
