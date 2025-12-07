@@ -59,16 +59,21 @@ button:hover {
 
 .header-content {
     max-width: 1200px;
-    margin: 50 auto;
-    padding: 50 20px;
+    margin: 0 auto;
+    padding: 12px 80px 12px 20px; /* Добавлен правый отступ для бургер-меню */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 56px;
 }
 
 .logo-container {
     position: relative;
     display: inline-block;
-    margin-right: 15px;
-    width: 50px;
-    height: 50px;
+    margin-right: 12px;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
 }
 
 .logo {
@@ -82,14 +87,44 @@ button:hover {
 
 h1 {
     color: white;
-    text-align: center;
+    text-align: left;
     margin-bottom: 0;
-    font-size: 2.2em;
+    font-size: 1.4em;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+}
+
+/* Бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+#burger-toggle {
+    display: none;
 }
 
 /* Стиль для мобильного меню */
@@ -108,6 +143,58 @@ h1 {
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s ease;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-nav li {
+    margin: 20px 0;
+}
+
+.mobile-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.mobile-nav a:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+#burger-toggle:checked ~ .burger-menu .burger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+#burger-toggle:checked ~ .burger-menu .burger-line:nth-child(2) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#burger-toggle:checked ~ .burger-menu .burger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+#burger-toggle:checked ~ .mobile-nav {
+    visibility: visible;
+    opacity: 1;
+}
+
+.burger-menu::before {
+    content: "Меню";
+    color: white;
+    font-size: 0.8em;
+    position: absolute;
+    top: -20px;
+    left: 0;
+    opacity: 1;
 }
 
 /* Sticky меню */
@@ -338,4 +425,91 @@ button.checkout {
 
 button.checkout:hover {
     background-color: #45a049;
+}
+
+/* Медиа-запросы для мобильной версии */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+    
+    /* Показываем бургер-меню на мобильных устройствах */
+    .burger-menu {
+        display: flex;
+    }
+    
+    /* Скрываем sticky-nav на мобильных */
+    .sticky-nav {
+        display: none;
+    }
+    
+    /* Контейнер для карточек и корзины - вертикальное расположение */
+    .container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    /* Карточки занимают всю ширину */
+    .cards {
+        width: 100%;
+    }
+    
+    .card {
+        width: 100%;
+        max-width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    /* Визуальная обратная связь при клике на мобильных */
+    .card:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+    
+    /* Корзина занимает всю ширину */
+    .cart {
+        width: 100%;
+    }
+    
+    /* Отключаем drag на мобильных */
+    .card[draggable="true"],
+    .card[draggable="false"] {
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Кнопка оформления заказа на всю ширину на мобильных */
+    button.checkout {
+        width: 100%;
+    }
+    
+    /* Улучшаем отступы для мобильных */
+    .main-header {
+        height: 70px;
+    }
+    
+    .header-content {
+        padding: 10px 60px 10px 15px; /* Уменьшен правый отступ для мобильных */
+    }
+    
+    h1 {
+        font-size: 1.1em;
+        justify-content: flex-start;
+        white-space: normal;
+        line-height: 1.3;
+    }
+    
+    .logo-container {
+        width: 35px;
+        height: 35px;
+        margin-right: 8px;
+    }
+    
+    /* Бургер-меню ближе к краю на мобильных */
+    .burger-menu {
+        top: 15px;
+        right: 15px;
+    }
 }
