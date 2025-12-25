@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Если пользователь отвечает "да"
             if (answer && answer.toLowerCase() === "да") {
                 // Переходим на страницу регистрации с помощью JavaScript
-                window.location.href = "forms.html";
+                window.location.href = "pages/forms.html";
             } else if (answer === "" || answer === null) {
                 // Если поле пустое или нажата кнопка "Отмена"
                 alert("Вы остались на главной странице.");
